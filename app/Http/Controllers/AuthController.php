@@ -21,9 +21,15 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
+        } else {
+            return new JsonResponse(['message' => 'Zły login lub hasło'], 401);
         }
 
-        return new JsonResponse([], 201);
+        // Delete old tokens
+        //Auth::user()->tokens->delete();
+
+        //$token = $request->user()->createToken($request->bearerToken());
+        return new JsonResponse(Auth::user(), 201);
     }
 
     public function destroy(Request $request)
