@@ -14,6 +14,11 @@ use Illuminate\Support\Facades\Artisan;
 |
 */
 
+Artisan::command('testuncio', function () {
+    $this->comment("testolonzjo.");
+})->purpose('Display an some test text');
+
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->purpose('Display an inspiring quote');
+
